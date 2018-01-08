@@ -33,9 +33,13 @@ gem 'faker', git: 'git://github.com/stympy/faker.git', branch: 'master'
 
 group :development, :test do
   # gem 'any_login'
+  gem 'brakeman', require: false
   gem 'capybara', '~> 2.13'
   gem 'pry-rails'
+  gem 'rails_best_practices'
+  gem 'reek'
   gem 'rspec-rails'
+  gem 'rubocop', require: false
   gem 'selenium-webdriver'
 end
 

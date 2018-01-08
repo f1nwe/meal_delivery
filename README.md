@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/f1nwe/meal_delivery.svg?branch=development)](https://travis-ci.org/f1nwe/meal_delivery)
+
 # README
 
 This README would normally document whatever steps are necessary to get the

@@ -19,7 +19,6 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-
   # Limits the available syntax to the non-monkey patched syntax that is
   # recommended. For more details, see:
   #   - http://rspec.info/blog/2012/06/rspecs-new-expectation-syntax/
