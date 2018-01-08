@@ -1,0 +1,31 @@
+Documentation:
+    Enabled: false
+
+Rails:
+    Enabled: true
+
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'config/initializers/*'
+    - 'bin/*'
+    - 'db/**/*'
+  TargetRubyVersion: 2.5
+
+EndOfLine:
+  Enabled: false
+
+Style/Encoding:
+  Enabled: true
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'
+    - 'spec/**/*'
+    - 'config/environments/*'
+
+Metrics/LineLength:
+  Exclude:
+    - 'config/environments/*'
+
