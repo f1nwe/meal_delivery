@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery with: :exception
 
-  # TODO: move to the base controller of client app
-  after_action :prepare_unobtrusive_flash
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+  end
 end

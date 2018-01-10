@@ -8,7 +8,12 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     #wrapper
+      nav.navbar.navbar-default.navbar-static-top role="navigation" style=("margin-bottom: 0")
+        = render 'layouts/account/header'
+        = render 'layouts/account/sidebar'
+    #page-wrapper
       .container-fluid
         = yield
+      = render 'layouts/account/footer'
 
 = any_login_here if defined?(AnyLogin)

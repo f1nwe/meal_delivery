@@ -1,5 +1,5 @@
-# == Schema Information
-#
+# frozen_string_literal: true
+
 # Table name: users
 #
 #  id                  :integer          not null, primary key
@@ -11,6 +11,8 @@
 
 FactoryBot.define do
   factory :user do
-    
+    name     Faker::Name.name
+    email    Faker::Internet.email
+    password Faker::Internet.password
   end
 end
