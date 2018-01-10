@@ -1,11 +1,19 @@
 doctype html
 html
   head
-    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
-    title MealDelivery
+    title Meal Delivery
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+    = stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    #wrapper
+      nav.navbar.navbar-default.navbar-static-top role="navigation" style=("margin-bottom: 0")
+        = render 'layouts/header'
+        = render 'layouts/sidebar'
+    #page-wrapper
+      .container-fluid
+        = yield
+      = render 'layouts/footer'
 
+= any_login_here if defined?(AnyLogin)
