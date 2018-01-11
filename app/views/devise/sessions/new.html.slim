@@ -5,7 +5,9 @@
     .main
       = f.email_field :email, autofocus: true, label: false,
         placeholder: 'Email', class: 'form-control'
+
       = f.password_field :password, autocomplete: "off",
         class: 'form-control', placeholder: 'Password'
+
       = f.submit 'Sign in', class: 'btn btn-primary'
       = link_to 'Sign up', new_user_registration_path,   class: 'btn btn-warning pull-right'

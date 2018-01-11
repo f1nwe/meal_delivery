@@ -1,14 +1,18 @@
 .container
   = simple_form_for resource, as: resource_name, url: registration_path(resource_name),
-    html: { class: 'form-signin mg-bt col-sm-6 col-sm-offset-3' } do |f|
+    html: { class: 'form form-signin mg-bt col-sm-6 col-sm-offset-3' } do |f|
     h3.heading-desc Login to Meal Service
     .main
-      = f.email_field :email, autofocus: true, label: false,
+      = f.input :email, autofocus: true, label: false,
         placeholder: 'Email', class: 'form-control', autofocus: true
+
       = f.input :name, label: false,
         placeholder: 'Name', class: 'form-control'
-      = f.password_field :password, autocomplete: "off",
+
+      = f.input :password, autocomplete: "off", label: false,
         class: 'form-control', placeholder: 'Password', required: true
-      = f.password_field :password_confirmation, autocomplete: "off",
+
+      = f.input :password_confirmation, autocomplete: "off", label: false,
         class: 'form-control', placeholder: 'Password Confirmation', required: true
+
       = f.submit 'Sign up', class: 'btn btn-primary'
