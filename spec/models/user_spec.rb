@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: users
@@ -9,6 +8,7 @@
 #  name                :string           default(""), not null
 #  encrypted_password  :string           default(""), not null
 #  remember_created_at :datetime
+#  role                :integer          default("user")
 #
 
 require 'rails_helper'
