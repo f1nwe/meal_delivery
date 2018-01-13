@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/f1nwe/meal_delivery.svg?branch=development)](https://travis-ci.org/f1nwe/meal_delivery)
+[![Build Status](https://travis-ci.org/f1nwe/meal_delivery.svg?branch=master)](https://travis-ci.org/f1nwe/meal_delivery)
 
 # README
 
