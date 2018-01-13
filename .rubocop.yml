@@ -29,3 +29,6 @@ Metrics/LineLength:
   Exclude:
     - 'config/environments/*'
 
+Naming/PredicateName:
+  Exclude:
+    - 'app/models/concerns/meal_holder.rb'

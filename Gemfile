@@ -16,6 +16,7 @@ gem 'font-awesome-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'kaminari'
+gem 'money-rails'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.7'
 gem 'rails', '~> 5.1.4'
@@ -52,5 +53,6 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers'
   gem 'simplecov'
 end
