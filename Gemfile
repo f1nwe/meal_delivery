@@ -33,7 +33,6 @@ gem 'factory_bot_rails'
 gem 'faker', git: 'git://github.com/stympy/faker.git', branch: 'master'
 
 group :development, :test do
-  # gem 'any_login'
   gem 'brakeman', require: false
   gem 'capybara', '~> 2.13'
   gem 'pry-rails'

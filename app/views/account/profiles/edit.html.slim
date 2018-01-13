@@ -1,0 +1,9 @@
+.panel.panel-default
+  .panel-heading Edit Profile
+  .panel-body
+    = simple_form_for @user, url: account_profile_path, html: { role: 'form' } do |f|
+      = f.input :email
+      = f.input :name
+      = f.input :password
+      = f.input :password_confirmation
+      = f.submit class: 'btn btn-success'

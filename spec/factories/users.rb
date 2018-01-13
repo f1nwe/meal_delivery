@@ -8,7 +8,7 @@
 #  name                :string           default(""), not null
 #  encrypted_password  :string           default(""), not null
 #  remember_created_at :datetime
-#  role                :integer          default("user")
+#  role                :integer          default("client")
 #
 
 # Table name: users
