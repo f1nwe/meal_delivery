@@ -18,6 +18,12 @@ require 'rspec/rails'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each do |file|
+    require file
+  end
+
+  config.render_views
+
   # database cleaner
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction

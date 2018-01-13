@@ -4,38 +4,16 @@
 ul.nav.navbar-top-links.navbar-right
   li.dropdown
     a.dropdown-toggle data-toggle="dropdown" href="#"
-      i.fa.fa-bell.fa-fw
-      i.fa.fa-caret-down
-    ul.dropdown-menu.dropdown-alerts
-      li
-        a href="#"
-          div
-            i.fa.fa-comment.fa-fw
-            | New Comment
-            span.pull-right.text-muted.small 4 minutes ago
-      li.divider
-      li
-        a href="#"
-          div
-            i.fa.fa-twitter.fa-fw
-            | 3 New Followers
-            span.pull-right.text-muted.small 12 minutes ago
-      li.divider
-      li
-        a.text-center href="#"
-          strong See All Alerts
-          i.fa.fa-angle-right
-  li.dropdown
-    a.dropdown-toggle data-toggle="dropdown" href="#"
       i.fa.fa-user.fa-fw
       i.fa.fa-caret-down
     ul.dropdown-menu.dropdown-user
       li
-        = link_to account_profile_path do
+        = link_to edit_account_profile_path do
           i.fa.fa-user.fa-fw
-          | User Profile
+          | Edit profile
       li.divider
       li
         = link_to destroy_user_session_path, method: :delete do
           i.fa.fa-sign-out.fa-fw
           | Logout
+.clearfix

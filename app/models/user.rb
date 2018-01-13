@@ -8,19 +8,21 @@
 #  name                :string           default(""), not null
 #  encrypted_password  :string           default(""), not null
 #  remember_created_at :datetime
-#  role                :integer          default("user")
+#  role                :integer          default("client")
 #
 
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :rememberable, :validatable
 
-  ROLES = %i[user admin].freeze
+  ROLES = %i[client admin].freeze
+  VALID_EMAIL_REGEX = /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
   enum role: ROLES
 
   before_create :set_admin, if: :first_user?
 
-  validates :name, presence: true, length: { in: 3..15 }
+  validates :name, presence: true, length: { in: 3..30 }
+  validates :email, format: { with: VALID_EMAIL_REGEX }
 
   private
 

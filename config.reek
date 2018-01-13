@@ -4,6 +4,16 @@ PrimaDonnaMethod:
 IrresponsibleModule:
   enabled: false
 
+'app/controllers':
+  InstanceVariableAssumption:
+    enabled: false
+
+  FeatureEnvy:
+    enabled: false
+
+  UtilityFunction:
+    enabled: false
+
 exclude_paths:
   - db/migrate
   - vendor

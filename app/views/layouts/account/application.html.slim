@@ -7,14 +7,13 @@ html
     = stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .unobtrusive-flash-container
-    #wrapper
-      nav.navbar.navbar-default.navbar-static-top role="navigation" style=("margin-bottom: 0")
-        = render 'layouts/account/header'
-        = render 'layouts/account/sidebar'
-    #page-wrapper
-      .container-fluid
-        = yield
-      = render 'layouts/account/footer'
+    .container.root
+      .col-xs-offset-1.col-xs-10.page
+        .unobtrusive-flash-container
+          nav.navbar.navbar-default.navbar-static-top role="navigation" style=("margin-bottom: 0")
+            = render 'layouts/account/header'
+            .clearfix
+            .content-wrapper
+              = yield
+          = render 'layouts/account/footer'
 
-= any_login_here if defined?(AnyLogin)
