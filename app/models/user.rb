@@ -22,6 +22,8 @@ class User < ApplicationRecord
 
   before_create :set_admin, if: :first_user?
 
+  scope :ordered, -> { order(email: :asc) }
+
   validates :name, presence: true, length: { in: 3..30 }
   validates :email, format: { with: VALID_EMAIL_REGEX }
 
