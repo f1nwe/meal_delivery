@@ -15,7 +15,7 @@ module Admin
     end
 
     def create
-      @menu = collection.new(menu_params)
+      @menu = Builders::Menu.build_from(menu_params)
 
       if @menu.save
         redirect_to [:admin, @menu]
@@ -38,7 +38,6 @@ module Admin
 
     def menu_params
       allowed_params = [
-        :date,
         drinks_attributes:        %i[id type name photo price _destroy],
         first_courses_attributes: %i[id type name photo price _destroy],
         main_courses_attributes:  %i[id type name photo price _destroy]
@@ -52,7 +51,9 @@ module Admin
     end
 
     def collection
-      date = params[:start_date] ? Date.parse(params[:start_date]) : Date.current
+      params_date = params[:start_date]
+      date        = params_date ? Date.parse(params_date) : Date.current
+
       Menu.ordered.where(date: date.beginning_of_month..date.end_of_month)
     end
 

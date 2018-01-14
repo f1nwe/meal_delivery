@@ -12,6 +12,14 @@ module Builders
 
         menu
       end
+
+      def build_from(params)
+        menu = ::Menu.new(params)
+
+        menu.date = Time.zone.today
+
+        menu
+      end
     end
   end
 end

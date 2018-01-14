@@ -21,17 +21,8 @@ class Menu < ApplicationRecord
   scope :ordered, -> { order(date: :asc) }
 
   validates :date, uniqueness: true, presence: true
-  validate  :menu_only_for_current_date
 
   def start_time
     date
-  end
-
-  private
-
-  def menu_only_for_current_date
-    return if date == Date.current
-
-    errors[:date] << 'You can create menu only for current day'
   end
 end

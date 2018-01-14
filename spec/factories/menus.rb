@@ -12,6 +12,8 @@
 
 FactoryBot.define do
   factory :menu do
-    date { Time.zone.today }
+    sequence :date do |n|
+      n.days.ago
+    end
   end
 end

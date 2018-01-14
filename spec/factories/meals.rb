@@ -16,12 +16,11 @@
 
 FactoryBot.define do
   factory :meal do
-    meal_classes = %w[Meal::Drink Meal::FirstCourse Meal::MainCourse].freeze
+    meal_classes = %w[Meals::Drink Meals::FirstCourse Meals::MainCourse].freeze
 
     association :menu, factory: :menu
     type { meal_classes.sample }
     name { Faker::Lorem.word }
-    photo 'MyString' # TODO: uploader
     price_kopiykas { Faker::Number.positive(1000, 10_000) }
 
     meal_classes.each do |klass|
