@@ -1,0 +1,10 @@
+.row
+  .col-xs-12
+    = month_calendar events: @menus do |date, menus|
+      = l(date, format: :short)
+      br
+      - if menus.any?
+        - menus.each do |menu|
+          = link_to 'Menu', admin_menu_path(menu)
+      -elsif Date.current == date
+        = link_to 'Create menu', new_admin_menu_path(date: date)
