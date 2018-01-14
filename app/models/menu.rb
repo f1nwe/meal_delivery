@@ -13,8 +13,16 @@
 class Menu < ApplicationRecord
   include MealHolder
 
+  before_create :set_date
+
   has_many_meals :meals
   has_many_meals :first_courses, class_name: 'Meals::FirstCourse'
   has_many_meals :main_courses, class_name: 'Meals::MainCourse'
   has_many_meals :drinks, class_name: 'Meals::Drink'
+
+  scope :ordered, -> { order(date: :asc) }
+
+  def start_time
+    date
+  end
 end

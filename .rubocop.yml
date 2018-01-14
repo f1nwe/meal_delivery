@@ -32,3 +32,6 @@ Metrics/LineLength:
 Naming/PredicateName:
   Exclude:
     - 'app/models/concerns/meal_holder.rb'
+
+Metrics/LineLength:
+  Max: 100

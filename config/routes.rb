@@ -3,13 +3,15 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: %i[index show]
+    resources :menus, except: %i[destroy]
   end
 
   devise_for :users
 
   namespace :account do
     resource :profile, only: %i[edit update]
+    get 'calendar', to: 'dashboard#calendar'
   end
 
-  root 'account/profiles#edit' # TODO: temporary
+  root 'account/dashboard#calendar'
 end
