@@ -1,5 +1,5 @@
 tr
-  td.col-xs-6
-    /TODO image
-  td.col-xs-3= meal.name
-  td.col-xs-3= meal.price
+  td.col-xs-9
+    = image_tag meal.photo_url, class: 'img-responsive'
+  td.col-xs-2= meal.name
+  td.col-xs-1= meal.price

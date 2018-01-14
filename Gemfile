@@ -10,6 +10,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'carrierwave', '~> 1.0'
 gem 'cocoon'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
