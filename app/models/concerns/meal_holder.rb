@@ -12,6 +12,8 @@ module MealHolder
       }
 
       has_many relation, default_args.merge(args)
+      accepts_nested_attributes_for relation, reject_if: :all_blank,
+                                              allow_destroy: true
     end
   end
 end

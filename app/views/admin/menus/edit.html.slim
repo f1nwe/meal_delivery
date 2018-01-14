@@ -1,2 +1,10 @@
-h1 Admin::Menus#edit
-p Find me in app/views/admin/menus/edit.html.slim
+.row
+  .col-xs-12
+    h3 Edit menu on #{l(@menu.date, format: :long)}
+.row
+  .col-xs-12
+    .panel.panel-default
+      .panel-heading Create Menu
+      .panel-body
+        = render 'admin/menus/form', menu: @menu
+

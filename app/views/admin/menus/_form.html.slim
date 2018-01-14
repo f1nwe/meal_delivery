@@ -1,0 +1,33 @@
+= simple_form_for [:admin, menu], html: { role: 'form' } do |f|
+    = f.input :date, as: :hidden
+
+    h4 Drinks
+    #drinks
+      = f.simple_fields_for :drinks do |drink|
+        = render 'drink_fields', f: drink
+      .links
+        = link_to_add_association 'Add drink', f, :drinks,
+          class: 'btn btn-xs btn-warning'
+      .clearfix
+
+    h4 First courses
+    #first_courses
+      = f.simple_fields_for :first_courses do |drink|
+        = render 'first_course_fields', f: drink
+      .links
+        = link_to_add_association 'Add first course', f, :first_courses,
+          class: 'btn btn-xs btn-warning'
+      .clearfix
+
+    h4 Main courses
+    #main_courses
+      = f.simple_fields_for :main_courses do |drink|
+        = render 'main_course_fields', f: drink
+      .links
+        = link_to_add_association 'Add main course', f, :main_courses,
+          class: 'btn btn-xs btn-warning'
+      .clearfix
+
+
+    hr
+    = f.submit class: 'btn btn-success'

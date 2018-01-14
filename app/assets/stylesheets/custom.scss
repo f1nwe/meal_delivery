@@ -9,3 +9,13 @@ div.alert {
 .content-wrapper {
   margin-top: 10px;
 }
+
+form.new_menu, form.edit_menu {
+  a.remove_fields {
+    margin-top: 24px;
+  }
+
+  a.add_fields {
+    margin: 0px 0 20px 15px;
+  }
+}

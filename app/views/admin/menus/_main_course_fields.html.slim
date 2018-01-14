@@ -1,0 +1,13 @@
+.nested_fields
+  = f.input :type, as: :hidden
+  .col-xs-3
+    /# TODO
+    = f.input :name
+  .col-xs-3
+    = f.input :photo
+  .col-xs-3
+    = f.input :price
+  .col-xs-3
+    = link_to_remove_association "remove meal", f, class: 'btn btn-danger'
+  .clearfix
+

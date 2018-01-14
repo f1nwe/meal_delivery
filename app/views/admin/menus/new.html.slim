@@ -1,2 +1,10 @@
-h1 Admin::Menus#new
-p Find me in app/views/admin/menus/new.html.slim
+.row
+  .col-xs-12
+    h3 Create menu on #{l(@menu.date, format: :long)}
+.row
+  .col-xs-12
+    .panel.panel-default
+      .panel-heading Create Menu
+      .panel-body
+        = render 'admin/menus/form', menu: @menu
+
