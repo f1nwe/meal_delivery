@@ -1,0 +1,19 @@
+table.table.table-striped.table-bordered.table-hover.no-footer
+  thead
+    tr
+      th Email
+      th Name
+      th Orders Count
+
+  tbody
+    - @users.each do |user|
+      tr
+        td= link_to user.email, [:admin, user]
+        td= user.name
+        /TODO: show real data
+        td= rand(5)
+  tfoot
+    tr
+      td colspan=3
+        .text-center
+          = paginate @users
