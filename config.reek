@@ -4,6 +4,14 @@ PrimaDonnaMethod:
 IrresponsibleModule:
   enabled: false
 
+exclude_paths:
+  - db
+  - vendor
+
+'app/uploaders':
+  UtilityFunction:
+    enabled: false
+
 'app/controllers':
   InstanceVariableAssumption:
     enabled: false
@@ -13,7 +21,3 @@ IrresponsibleModule:
 
   UtilityFunction:
     enabled: false
-
-exclude_paths:
-  - db/migrate
-  - vendor
