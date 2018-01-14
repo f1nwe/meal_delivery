@@ -39,9 +39,9 @@ module Admin
     def menu_params
       allowed_params = [
         :date,
-        drinks_attributes: %i[type name photo price destroy],
-        first_courses_attributes: %i[type name photo price destroy],
-        main_courses_attributes: %i[type name photo price destroy]
+        drinks_attributes:        %i[id type name photo price _destroy],
+        first_courses_attributes: %i[id type name photo price _destroy],
+        main_courses_attributes:  %i[id type name photo price _destroy]
       ]
 
       params.require(:menu).permit(allowed_params)

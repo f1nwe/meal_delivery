@@ -15,8 +15,11 @@
 #
 
 class Meal < ApplicationRecord
+  mount_uploader :photo, ::PhotoUploader
   monetize :price_kopiykas
   belongs_to :menu
 
-  validates :type, presence: true
+  validates :type,  presence: true
+  validates :price, presence: true
+  validates :name,  presence: true
 end
