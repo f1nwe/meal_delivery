@@ -11,11 +11,17 @@ module Admin
     def show; end
 
     def new
-      @menu = collection.new
+      @menu = Builders::Menu.build
     end
 
     def create
       @menu = collection.new(menu_params)
+
+      if @menu.save
+        redirect_to [:admin, @menu]
+      else
+        render :new
+      end
     end
 
     def edit; end
@@ -31,7 +37,14 @@ module Admin
     private
 
     def menu_params
-      params.require(:menu) # TODO
+      allowed_params = [
+        :date,
+        drinks_attributes: %i[type name photo price destroy],
+        first_courses_attributes: %i[type name photo price destroy],
+        main_courses_attributes: %i[type name photo price destroy]
+      ]
+
+      params.require(:menu).permit(allowed_params)
     end
 
     def init_menu

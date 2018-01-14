@@ -1,2 +1,31 @@
-h1 Admin::Menus#show
-p Find me in app/views/admin/menus/show.html.slim
+.row
+  .col-xs-12
+    h3 Menu on #{l(@menu.date, format: :long)}
+.row
+  .col-xs-12
+    .panel.panel-default
+      .panel-heading Menu
+      .panel-body
+        table.table.table-striped.table-bordered.table-hover.no-footer
+          thead
+            tr
+              th Photo
+              th Name
+              th Price
+          tbody
+            tr
+              td.bg-info colspan=3
+                h6 Drinks
+            = render partial: 'admin/menus/meals', collection: @menu.drinks, as: :meal
+
+            tr
+              td.bg-info colspan=3
+                h6 First courses
+            = render partial: 'admin/menus/meals', collection: @menu.first_courses, as: :meal
+
+            tr
+              td.bg-info colspan=3
+                h6 Main courses
+            = render partial: 'admin/menus/meals', collection: @menu.main_courses, as: :meal
+
+

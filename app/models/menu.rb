@@ -13,8 +13,6 @@
 class Menu < ApplicationRecord
   include MealHolder
 
-  before_create :set_date
-
   has_many_meals :meals
   has_many_meals :first_courses, class_name: 'Meals::FirstCourse'
   has_many_meals :main_courses, class_name: 'Meals::MainCourse'
@@ -22,7 +20,18 @@ class Menu < ApplicationRecord
 
   scope :ordered, -> { order(date: :asc) }
 
+  validates :date, uniqueness: true, presence: true
+  validate  :menu_only_for_current_date
+
   def start_time
     date
+  end
+
+  private
+
+  def menu_only_for_current_date
+    return if date == Date.current
+
+    errors[:date] << 'You can create menu only for current day'
   end
 end
