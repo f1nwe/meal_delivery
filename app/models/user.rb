@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   before_create :set_admin, if: :first_user?
 
-  has_many :daily_order, dependent: :destroy
+  has_many :daily_orders, dependent: :destroy
 
   scope :ordered, -> { order(email: :asc) }
 

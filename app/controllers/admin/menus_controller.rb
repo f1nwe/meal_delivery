@@ -15,7 +15,7 @@ module Admin
     end
 
     def create
-      @menu = Builders::Menu.build_from(menu_params)
+      @menu = Builders::Menu.build_from(resource_params)
 
       if @menu.save
         redirect_to [:admin, @menu]
@@ -27,7 +27,7 @@ module Admin
     def edit; end
 
     def update
-      if @menu.update(menu_params)
+      if @menu.update(resource_params)
         redirect_to [:admin, @menu]
       else
         render :edit
@@ -36,7 +36,7 @@ module Admin
 
     private
 
-    def menu_params
+    def resource_params
       allowed_params = [
         drinks_attributes:        %i[id type name photo price _destroy],
         first_courses_attributes: %i[id type name photo price _destroy],
@@ -51,14 +51,17 @@ module Admin
     end
 
     def collection
-      params_date = params[:start_date]
-      date        = params_date ? Date.parse(params_date) : Date.current
-
-      Menu.ordered.where(date: date.beginning_of_month..date.end_of_month)
+      Menu.in_month(start_date)
     end
 
     def resource
       collection.find(params[:id])
+    end
+
+    def start_date
+      Date.parse(params[:start_date])
+    rescue ArgumentError, TypeError
+      Time.zone.today
     end
   end
 end

@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :account do
-    resource :profile, only: %i[edit update]
+    resource  :profile, only: %i[edit update]
+    resources :daily_orders, only: %i[show new create]
+
     get 'calendar', to: 'dashboard#calendar'
   end
 

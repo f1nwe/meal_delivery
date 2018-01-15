@@ -15,4 +15,7 @@ class DailyOrder < ApplicationRecord
   has_many :daily_order_meals, dependent: :destroy
   has_many :meals, through: :daily_order_meals
   belongs_to :user
+
+  scope :ordered,  -> { order(date: :asc) }
+  scope :in_month, ->(date) { where(date: date.beginning_of_month..date.end_of_month) }
 end
