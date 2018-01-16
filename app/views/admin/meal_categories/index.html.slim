@@ -1,0 +1,26 @@
+.row
+  .col-xs-12
+    .panel.panel-default
+      .panel-heading
+        | Meal category
+        .pull-right
+          = link_to 'Create', new_admin_meal_category_path, class: 'btn btn-xs btn-success'
+      .panel-body
+        table.table.table-striped.table-bordered.table-hover.no-footer
+          thead
+            tr
+              th Title
+              th colspan=2 Actions
+
+          tbody
+            - @meal_categories.each do |meal_category|
+              tr
+                td= meal_category.title
+                td= link_to 'edit', edit_admin_meal_category_path(meal_category)
+                td= link_to 'delete', admin_meal_category_path(meal_category), method: :delete,
+                  data: { confirm: 'Are you sure' }
+          tfoot
+            tr
+              td colspan=3
+                .text-center
+                  = paginate @meal_categories

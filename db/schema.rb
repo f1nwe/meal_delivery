@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115194515) do
+ActiveRecord::Schema.define(version: 20180116194051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 20180115194515) do
     t.index ["user_id"], name: "index_daily_orders_on_user_id"
   end
 
+  create_table "meal_categories", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "meals", force: :cascade do |t|
     t.string "type", null: false
     t.string "name"
@@ -41,6 +47,8 @@ ActiveRecord::Schema.define(version: 20180115194515) do
     t.integer "price_kopiykas", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "meal_category_id"
+    t.index ["meal_category_id"], name: "index_meals_on_meal_category_id"
     t.index ["menu_id"], name: "index_meals_on_menu_id"
     t.index ["type"], name: "index_meals_on_type"
   end
@@ -64,4 +72,5 @@ ActiveRecord::Schema.define(version: 20180115194515) do
   add_foreign_key "daily_order_meals", "daily_orders"
   add_foreign_key "daily_order_meals", "meals"
   add_foreign_key "daily_orders", "users"
+  add_foreign_key "meals", "meal_categories"
 end
