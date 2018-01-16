@@ -1,2 +1,6 @@
-h1 Account::DailyOrders#new
-p Find me in app/views/account/daily_orders/new.html.slim
+.panel.panel-default
+  .panel-heading Order meals
+  .panel-body
+    = simple_form_for [:account, @daily_order], html: { role: 'form' } do |f|
+      = f.input :meals, collection: @daily_menu.drinks
+      = f.submit class: 'btn btn-success'

@@ -7,12 +7,13 @@ module Account
     end
 
     def new
+      @daily_menu  = daily_menu
       @daily_order = DailyOrder.new
     end
 
     def create
-      @daily_order      = DailyOrder.new(resource_params)
-      @daily_order.date = Time.zone.now
+      @daily_menu  = daily_menu
+      @daily_order = Builders::DailyOrder.build_from(resource_params)
 
       if @daily_order.save
         redirect_to account_daily_order_path(@daily_order)
@@ -33,6 +34,10 @@ module Account
 
     def resource
       collection.find(params[:id])
+    end
+
+    def daily_menu
+      Menu.find_by!(date: Time.zone.today)
     end
   end
 end

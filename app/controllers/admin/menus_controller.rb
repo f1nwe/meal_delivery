@@ -11,7 +11,7 @@ module Admin
     def show; end
 
     def new
-      @menu = Builders::Menu.build
+      @menu = Builders::Menu.build_new
     end
 
     def create

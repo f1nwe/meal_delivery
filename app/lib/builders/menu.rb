@@ -3,8 +3,8 @@
 module Builders
   class Menu
     class << self
-      def build
-        menu = ::Menu.new(date: Date.current)
+      def build_new
+        menu = ::Menu.new(date: Time.zone.today)
 
         menu.drinks.new
         menu.first_courses.new
@@ -13,7 +13,7 @@ module Builders
         menu
       end
 
-      def build_from(params)
+      def build_from(params = {})
         menu = ::Menu.new(params)
 
         menu.date = Time.zone.today

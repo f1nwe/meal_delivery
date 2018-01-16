@@ -4,5 +4,6 @@
 //= require unobtrusive_flash
 //= require unobtrusive_flash_bootstrap
 //= require cocoon
+//= require select2
 
 UnobtrusiveFlash.flashOptions['timeout'] = 2000
