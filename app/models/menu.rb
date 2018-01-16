@@ -22,8 +22,4 @@ class Menu < ApplicationRecord
   scope :in_month, ->(date) { where(date: date.beginning_of_month..date.end_of_month) }
 
   validates :date, uniqueness: true, presence: true
-
-  def start_time
-    date
-  end
 end

@@ -51,7 +51,7 @@ module Admin
     end
 
     def collection
-      Menu.in_month(start_date)
+      Menu.in_month(start_date).ordered
     end
 
     def resource

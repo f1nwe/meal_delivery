@@ -1,6 +1,6 @@
 .row
   .col-xs-12
-    = month_calendar events: @menus do |date, menus|
+    = month_calendar attribute: :date, events: @menus do |date, menus|
       = l(date, format: :short)
       br
       - if menus.any?

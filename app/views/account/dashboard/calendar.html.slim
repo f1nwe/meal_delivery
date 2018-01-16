@@ -1,11 +1,6 @@
 .row
   .col-xs-12
-    = month_calendar events: @daily_orders do |date, daily_orders|
+    = month_calendar attribute: :date, events: @daily_orders do |date, daily_orders|
       = l(date, format: :short)
-      br
-      - if daily_orders.any?
-        - daily_orders.each do |daily_order|
-          = link_to 'Order', account_daily_order_path(daily_order)
-      - elsif Date.current == date
-        = link_to 'Order meal', new_account_daily_order_path(date: date)
-
+      - if @available_menu_dates.include?(date)
+        = render 'account/dashboard/calendar_cell_data', daily_orders: daily_orders
