@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
   namespace :admin do
     resources :users,           only:   %i[index show]
     resources :menus,           except: %i[destroy]
@@ -9,8 +13,6 @@ Rails.application.routes.draw do
     get 'dates',       to: 'dates#index'
     get 'dates/:date', to: 'dates#show', as: 'date'
   end
-
-  devise_for :users
 
   namespace :account do
     resource  :profile,      only: %i[edit update]

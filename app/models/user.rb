@@ -20,8 +20,6 @@ class User < ApplicationRecord
 
   enum role: ROLES
 
-  before_create :set_admin, if: :first_user?
-
   has_many :daily_orders, dependent: :destroy
 
   scope :ordered, -> { order(email: :asc) }
@@ -29,13 +27,13 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 3..30 }
   validates :email, format: { with: VALID_EMAIL_REGEX }
 
-  private
+  def first?
+    first_user = self.class.first
 
-  def set_admin
-    self.role = :admin
+    (first_user == self) || first_user.nil?
   end
 
-  def first_user?
-    self.class.count.zero?
+  def make_admin
+    update(role: :admin)
   end
 end

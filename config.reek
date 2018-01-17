@@ -21,3 +21,7 @@ exclude_paths:
 
   UtilityFunction:
     enabled: false
+
+NilCheck:
+  exclude:
+    - 'User#first?'
