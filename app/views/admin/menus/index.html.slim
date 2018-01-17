@@ -1,10 +1,17 @@
 .row
   .col-xs-12
-    = month_calendar attribute: :date, events: @menus do |date, menus|
-      = l(date, format: :short)
-      br
-      - if menus.any?
-        - menus.each do |menu|
-          = link_to 'Menu', admin_menu_path(menu)
-      -elsif Date.current == date
-        = link_to 'Create menu', new_admin_menu_path
+    .panel.panel-default
+      .panel-heading
+        | Menus
+        .pull-right
+          = link_to 'Create menu for today', new_admin_menu_path, class: 'btn btn-xs btn-success'
+
+      .panel-body
+        = month_calendar attribute: :date, events: @menus do |date, menus|
+          = l(date, format: :short)
+          br
+          - if menus.any?
+            - menus.each do |menu|
+              = link_to 'Menu', admin_menu_path(menu)
+          -elsif Date.current == date
+            = link_to 'Create menu', new_admin_menu_path

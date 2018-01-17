@@ -3,7 +3,9 @@
   .panel-body
     = render 'shared/meals_per_groups_table', grouped_meals: @daily_menu.meals_per_categories
 
-.panel.panel-default
-  .panel-heading Order meals
-  .panel-body
-    = render 'account/daily_orders/form', daily_menu: @daily_menu, daily_order: @daily_order
+- if @daily_order.date.today?
+  .panel.panel-default
+    .panel-heading Order meals
+    .panel-body
+      = render 'account/daily_orders/form', daily_menu: @daily_menu, daily_order: @daily_order
+
