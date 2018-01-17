@@ -22,4 +22,24 @@ RSpec.describe Meal, type: :model do
   describe 'associations' do
     it { should belong_to(:menu) }
   end
+
+  describe 'update_total_cost_for_orders' do
+    let(:meal) { create(:meal) }
+
+    it 'updates when price changed' do
+      expect(meal).to receive(:update_total_cost_for_orders)
+      meal.update(price: rand(10..100))
+    end
+
+    it 'updates on save changed' do
+      meal = build(:meal)
+      expect(meal).to receive(:update_total_cost_for_orders)
+      meal.save
+    end
+
+    it 'does not update when price has not changed' do
+      expect(meal).not_to receive(:update_total_cost_for_orders)
+      meal.update(name: Faker::Lorem.word)
+    end
+  end
 end

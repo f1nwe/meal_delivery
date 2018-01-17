@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :users,           only:   %i[index show]
     resources :menus,           except: %i[destroy]
     resources :meal_categories, except: %i[show]
+
+    get 'dates',       to: 'dates#index'
+    get 'dates/:date', to: 'dates#show', as: 'date'
   end
 
   devise_for :users
