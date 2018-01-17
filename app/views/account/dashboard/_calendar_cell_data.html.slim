@@ -1,0 +1,7 @@
+- if daily_orders.any?
+  - daily_orders.each do |daily_order|
+    .order
+      = link_to 'Order', [:account, daily_order]
+- else
+  .new_order
+    = link_to 'Order meal', new_account_daily_order_path(date: date)

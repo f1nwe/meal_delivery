@@ -4,14 +4,14 @@
 #
 # Table name: meals
 #
-#  id             :integer          not null, primary key
-#  type           :string           not null
-#  name           :string
-#  photo          :string
-#  menu_id        :integer
-#  price_kopiykas :integer          default(0), not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id               :integer          not null, primary key
+#  name             :string
+#  photo            :string
+#  menu_id          :integer
+#  price_kopiykas   :integer          default(0), not null
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  meal_category_id :integer
 #
 
 require 'rails_helper'

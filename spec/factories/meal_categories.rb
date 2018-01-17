@@ -2,16 +2,16 @@
 
 # == Schema Information
 #
-# Table name: menus
+# Table name: meal_categories
 #
 #  id         :integer          not null, primary key
-#  date       :date
+#  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-require 'rails_helper'
-
-RSpec.describe Menu, type: :model do
-  include_examples 'valid_factories', :menu
+FactoryBot.define do
+  factory :meal_category do
+    title { Faker::Lorem.word }
+  end
 end

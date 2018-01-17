@@ -2,20 +2,20 @@
 
 module Admin
   class MenusController < BaseController
-    before_action :init_menu, only: %i[show edit update]
-
     def index
-      @menus = collection
+      @menus = collection.in_month(start_date)
     end
 
-    def show; end
+    def show
+      @menu = resource
+    end
 
     def new
-      @menu = Builders::Menu.build
+      @menu = Builders::Menu.build_new
     end
 
     def create
-      @menu = Builders::Menu.build_from(menu_params)
+      @menu = Builders::Menu.build_from(resource_params)
 
       if @menu.save
         redirect_to [:admin, @menu]
@@ -24,10 +24,14 @@ module Admin
       end
     end
 
-    def edit; end
+    def edit
+      @menu = resource
+    end
 
     def update
-      if @menu.update(menu_params)
+      @menu = resource
+
+      if @menu.update(resource_params)
         redirect_to [:admin, @menu]
       else
         render :edit
@@ -36,29 +40,26 @@ module Admin
 
     private
 
-    def menu_params
+    def resource_params
       allowed_params = [
-        drinks_attributes:        %i[id type name photo price _destroy],
-        first_courses_attributes: %i[id type name photo price _destroy],
-        main_courses_attributes:  %i[id type name photo price _destroy]
+        meals_attributes: %i[id meal_category_id name photo price _destroy]
       ]
 
       params.require(:menu).permit(allowed_params)
     end
 
-    def init_menu
-      @menu = resource
-    end
-
     def collection
-      params_date = params[:start_date]
-      date        = params_date ? Date.parse(params_date) : Date.current
-
-      Menu.ordered.where(date: date.beginning_of_month..date.end_of_month)
+      Menu.ordered
     end
 
     def resource
       collection.find(params[:id])
+    end
+
+    def start_date
+      Date.parse(params[:start_date])
+    rescue ArgumentError, TypeError
+      Time.zone.today
     end
   end
 end

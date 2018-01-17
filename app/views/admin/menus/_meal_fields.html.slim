@@ -1,12 +1,14 @@
 .nested-fields
-  = f.input :type, as: :hidden
+  .col-xs-2
+    = f.association :meal_category,
+      input_html: { class: 'select2' }
   .col-xs-3
     = f.input :name
   .col-xs-3
     = f.input :photo
-  .col-xs-3
+  .col-xs-2
     = f.input :price
-  .col-xs-3
+  .col-xs-2
     = link_to_remove_association "remove meal", f, class: 'btn btn-danger'
   .clearfix
 

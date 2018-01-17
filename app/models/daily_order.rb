@@ -2,21 +2,22 @@
 
 # == Schema Information
 #
-# Table name: menus
+# Table name: daily_orders
 #
 #  id         :integer          not null, primary key
+#  user_id    :integer
 #  date       :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  menu_id    :integer
 #
 
-class Menu < ApplicationRecord
-  has_many :meals, inverse_of: :menu, dependent: :nullify
-  has_many :daily_orders, dependent: :nullify
-  accepts_nested_attributes_for :meals, reject_if: :all_blank, allow_destroy: true
+class DailyOrder < ApplicationRecord
+  belongs_to :menu
+  belongs_to :user
+  has_many :daily_order_meals, dependent: :destroy
+  has_many :meals, through: :daily_order_meals
 
   scope :ordered,  -> { order(date: :asc) }
   scope :in_month, ->(date) { where(date: date.beginning_of_month..date.end_of_month) }
-
-  validates :date, uniqueness: true, presence: true
 end

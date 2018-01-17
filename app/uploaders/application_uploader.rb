@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationUploader < CarrierWave::Uploader::Base
+  include CarrierWave::MiniMagick
+
   if Rails.env.production?
     storage :fog
   else

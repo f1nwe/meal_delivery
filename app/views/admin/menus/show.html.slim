@@ -13,19 +13,8 @@
               th Name
               th Price
           tbody
-            tr
-              td.bg-info colspan=3
-                h6 Drinks
-            = render partial: 'admin/menus/meals', collection: @menu.drinks, as: :meal
+            - Presenters::Menu.new(@menu).meals_per_categories.each do |category, meals|
+              = render 'admin/menus/meal_category_row', title: category, meals: meals
 
-            tr
-              td.bg-info colspan=3
-                h6 First courses
-            = render partial: 'admin/menus/meals', collection: @menu.first_courses, as: :meal
-
-            tr
-              td.bg-info colspan=3
-                h6 Main courses
-            = render partial: 'admin/menus/meals', collection: @menu.main_courses, as: :meal
 
 
