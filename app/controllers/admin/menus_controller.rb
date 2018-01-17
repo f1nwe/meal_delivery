@@ -3,7 +3,7 @@
 module Admin
   class MenusController < BaseController
     def index
-      @menus = collection
+      @menus = collection.in_month(start_date)
     end
 
     def show
@@ -49,7 +49,7 @@ module Admin
     end
 
     def collection
-      Menu.in_month(start_date).ordered
+      Menu.ordered
     end
 
     def resource

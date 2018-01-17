@@ -9,11 +9,13 @@
 #  date       :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  menu_id    :integer
 #
 
 FactoryBot.define do
   factory :daily_order do
     association :user, factory: :user
+    association :menu, factory: :menu
     sequence :date do |n|
       n.days.ago
     end

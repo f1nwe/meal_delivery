@@ -8,12 +8,12 @@ module Account
 
     def new
       @daily_menu  = daily_menu
-      @daily_order = DailyOrder.new
+      @daily_order = Builders::DailyOrder.new(daily_menu, current_user).build_new
     end
 
     def create
       @daily_menu  = daily_menu
-      @daily_order = Builders::DailyOrder.build_from(resource_params)
+      @daily_order = Builders::DailyOrder.new(daily_menu, current_user).build_from(resource_params)
 
       if @daily_order.save
         redirect_to account_daily_order_path(@daily_order)
@@ -25,7 +25,7 @@ module Account
     private
 
     def resource_params
-      params.require(:daily_order)
+      params.require(:daily_order).permit(meal_ids: [])
     end
 
     def collection
@@ -37,7 +37,11 @@ module Account
     end
 
     def daily_menu
-      Menu.find_by!(date: Time.zone.today)
+      Menu.find_by!(date: date)
+    end
+
+    def date
+      params[:date] || Time.zone.today
     end
   end
 end

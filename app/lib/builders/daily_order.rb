@@ -2,18 +2,23 @@
 
 module Builders
   class DailyOrder
-    class << self
-      def build_new
-        ::DailyOrder.new(date: Time.zone.today)
-      end
+    attr_reader :menu, :date, :default_params, :user
 
-      def build_from(params = {})
-        daily_menu = ::DailyOrder.new(params)
+    def initialize(menu, user)
+      @menu           = menu
+      @user           = user
+      @default_params = {
+        date: menu.date,
+        user: @user
+      }
+    end
 
-        daily_menu.date = Time.zone.today
+    def build_new
+      menu.daily_orders.new(default_params)
+    end
 
-        daily_menu
-      end
+    def build_from(params = {})
+      menu.daily_orders.new(params.merge(default_params))
     end
   end
 end
