@@ -4,17 +4,11 @@
 .row
   .col-xs-12
     .panel.panel-default
-      .panel-heading Menu
+      .panel-heading
+        | Menu
+        .pull-right
+          = link_to 'Edit', edit_admin_menu_path(@menu)
+
       .panel-body
-        table.table.table-striped.table-bordered.table-hover.no-footer
-          thead
-            tr
-              th Photo
-              th Name
-              th Price
-          tbody
-            - Presenters::Menu.new(@menu).meals_per_categories.each do |category, meals|
-              = render 'admin/menus/meal_category_row', title: category, meals: meals
-
-
-
+        = render 'shared/meals_per_groups_table',
+          grouped_meals: Presenters::Menu.new(@menu).meals_per_categories

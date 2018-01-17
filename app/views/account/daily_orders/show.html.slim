@@ -1,2 +1,21 @@
-h1 Account::DailyOrders#show
-p Find me in app/views/account/daily_orders/show.html.slim
+.row
+  .col-xs-12
+    h3 Daily order on #{l(@daily_order.date, format: :long)}
+.row
+  .col-xs-12
+    .panel.panel-default
+      .panel-heading Menu
+      .panel-body
+        table.table.table-striped.table-bordered.table-hover.no-footer
+          thead
+            tr
+              th Photo
+              th Name
+              th Price
+          tbody
+            - @daily_order.meals.each do |meal|
+              tr
+                td.col-xs-9
+                  = image_tag meal.photo_url, class: 'img-responsive'
+                td.col-xs-2= meal.name
+                td.col-xs-1= meal.price

@@ -7,7 +7,7 @@ module Account
     end
 
     def new
-      @daily_menu  = daily_menu
+      @daily_menu  = Presenters::Menu.new(daily_menu)
       @daily_order = Builders::DailyOrder.new(daily_menu, current_user).build_new
     end
 

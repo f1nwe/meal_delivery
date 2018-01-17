@@ -1,0 +1,9 @@
+= simple_form_for [:account, daily_order], html: { role: 'form' } do |f|
+  - daily_menu.meals_per_categories.each do |category, meals|
+    .form-group
+      = f.association :meals,
+        label: category.singularize,
+        collection: meals,
+        input_html: { class: 'select2-singular' }
+
+  = f.submit class: 'btn btn-success'

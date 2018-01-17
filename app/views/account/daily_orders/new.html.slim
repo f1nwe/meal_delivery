@@ -1,12 +1,9 @@
 .panel.panel-default
+  .panel-heading Available meals
+  .panel-body
+    = render 'shared/meals_per_groups_table', grouped_meals: @daily_menu.meals_per_categories
+
+.panel.panel-default
   .panel-heading Order meals
   .panel-body
-    = simple_form_for [:account, @daily_order], html: { role: 'form' } do |f|
-      - Presenters::Menu.new(@daily_menu).meals_per_categories.each do |category, meals|
-        .form-group
-          = f.association :meals,
-            label: category.singularize,
-            collection: meals,
-            input_html: { class: 'select2', multiple: false }
-
-      = f.submit class: 'btn btn-success'
+    = render 'account/daily_orders/form', daily_menu: @daily_menu, daily_order: @daily_order
