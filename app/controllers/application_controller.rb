@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  include Authorization
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :prepare_unobtrusive_flash
