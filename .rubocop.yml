@@ -19,6 +19,10 @@ EndOfLine:
 Style/Encoding:
   Enabled: true
 
+Style/NestedParenthesizedCalls:
+  Exclude:
+    - 'spec/**/*'
+
 Metrics/BlockLength:
   Exclude:
     - 'config/routes.rb'

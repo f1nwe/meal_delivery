@@ -40,7 +40,6 @@ RSpec.describe Admin::MenusController, type: :controller do
           1 => attributes_for(:meal).merge(meal_category_id: meal_category.id)
         }
       }
-
       meals_attributes.merge(attributes_for(:menu))
     end
 

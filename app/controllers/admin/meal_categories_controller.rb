@@ -38,7 +38,7 @@ module Admin
 
     def destroy
       @meal_category = resource
-      @meal_category.destroy
+      @meal_category.destroy!
 
       flash[:success] = 'Category was successfully deleted'
 
