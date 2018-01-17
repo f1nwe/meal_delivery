@@ -2,13 +2,13 @@
 
 module Admin
   class MenusController < BaseController
-    before_action :init_menu, only: %i[show edit update]
-
     def index
       @menus = collection
     end
 
-    def show; end
+    def show
+      @menu = resource
+    end
 
     def new
       @menu = Builders::Menu.build_new
@@ -24,9 +24,13 @@ module Admin
       end
     end
 
-    def edit; end
+    def edit
+      @menu = resource
+    end
 
     def update
+      @menu = resource
+
       if @menu.update(resource_params)
         redirect_to [:admin, @menu]
       else
@@ -38,16 +42,10 @@ module Admin
 
     def resource_params
       allowed_params = [
-        drinks_attributes:        %i[id type name photo price _destroy],
-        first_courses_attributes: %i[id type name photo price _destroy],
-        main_courses_attributes:  %i[id type name photo price _destroy]
+        meals_attributes: %i[id meal_category_id name photo price _destroy]
       ]
 
       params.require(:menu).permit(allowed_params)
-    end
-
-    def init_menu
-      @menu = resource
     end
 
     def collection

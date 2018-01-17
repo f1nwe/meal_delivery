@@ -1,6 +1,5 @@
 - if meals.any?
   tr
     td.bg-info colspan=3
-      h6= title
+      h4= title
   = render partial: 'admin/menus/meals', collection: meals, as: :meal
-

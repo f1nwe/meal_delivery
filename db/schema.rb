@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180116194051) do
+ActiveRecord::Schema.define(version: 20180117124234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 20180116194051) do
   end
 
   create_table "meals", force: :cascade do |t|
-    t.string "type", null: false
     t.string "name"
     t.string "photo"
     t.bigint "menu_id"
@@ -50,7 +49,6 @@ ActiveRecord::Schema.define(version: 20180116194051) do
     t.bigint "meal_category_id"
     t.index ["meal_category_id"], name: "index_meals_on_meal_category_id"
     t.index ["menu_id"], name: "index_meals_on_menu_id"
-    t.index ["type"], name: "index_meals_on_type"
   end
 
   create_table "menus", force: :cascade do |t|

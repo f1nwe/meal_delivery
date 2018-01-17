@@ -4,7 +4,6 @@
 # Table name: meals
 #
 #  id               :integer          not null, primary key
-#  type             :string           not null
 #  name             :string
 #  photo            :string
 #  menu_id          :integer

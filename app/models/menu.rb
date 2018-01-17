@@ -11,12 +11,8 @@
 #
 
 class Menu < ApplicationRecord
-  include MealHolder
-
-  has_many_meals :meals
-  has_many_meals :first_courses, class_name: 'Meals::FirstCourse'
-  has_many_meals :main_courses, class_name: 'Meals::MainCourse'
-  has_many_meals :drinks, class_name: 'Meals::Drink'
+  has_many :meals, inverse_of: :menu, dependent: :destroy
+  accepts_nested_attributes_for :meals, reject_if: :all_blank, allow_destroy: true
 
   scope :ordered,  -> { order(date: :asc) }
   scope :in_month, ->(date) { where(date: date.beginning_of_month..date.end_of_month) }

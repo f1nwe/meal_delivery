@@ -4,7 +4,6 @@
 # Table name: meals
 #
 #  id               :integer          not null, primary key
-#  type             :string           not null
 #  name             :string
 #  photo            :string
 #  menu_id          :integer
@@ -24,7 +23,8 @@ class Meal < ApplicationRecord
   belongs_to :meal_category
   belongs_to :menu
 
-  validates :type,  presence: true
+  accepts_nested_attributes_for :meal_category
+
   validates :price, presence: true
   validates :name,  presence: true
 end

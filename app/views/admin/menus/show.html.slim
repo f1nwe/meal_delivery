@@ -13,9 +13,8 @@
               th Name
               th Price
           tbody
-            = render 'admin/menus/meal_type_row', title: 'First Courses', meals: @menu.first_courses
-            = render 'admin/menus/meal_type_row', title: 'Main Courses', meals: @menu.main_courses
-            = render 'admin/menus/meal_type_row', title: 'Drinks', meals: @menu.drinks
+            - Presenters::Menu.new(@menu).meals_per_categories.each do |category, meals|
+              = render 'admin/menus/meal_category_row', title: category, meals: meals
 
 
 
