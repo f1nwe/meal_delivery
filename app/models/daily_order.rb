@@ -23,7 +23,10 @@ class DailyOrder < ApplicationRecord
 
   scope :ordered,  -> { order(date: :asc) }
   scope :in_month, ->(date) { where(date: date.beginning_of_month..date.end_of_month) }
+
   after_create :calculate_total_cost
+
+  delegate :name, to: :user, prefix: true
 
   def self.total_cost
     @total_cost ||= Money.new(sum(:total_cost_kopiykas))

@@ -11,7 +11,7 @@
           tbody
             - @user_orders.each do |order|
               tr
-                td= link_to order.user.name, 'Todo'
+                td= link_to order.user.name, admin_daily_order_path(order)
                 td= order.total_cost
           tfoot
             tr

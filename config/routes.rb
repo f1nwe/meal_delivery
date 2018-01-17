@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'daily_orders/show'
+  end
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -9,6 +13,7 @@ Rails.application.routes.draw do
     resources :users,           only:   %i[index show]
     resources :menus,           except: %i[destroy]
     resources :meal_categories, except: %i[show]
+    resources :daily_orders,    only:   %i[show]
 
     get 'dates',       to: 'dates#index'
     get 'dates/:date', to: 'dates#show', as: 'date'
