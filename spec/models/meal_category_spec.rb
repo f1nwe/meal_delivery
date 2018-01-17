@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: meal_categories
@@ -11,5 +13,5 @@
 require 'rails_helper'
 
 RSpec.describe MealCategory, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  include_examples 'valid_factories', :meal_category
 end

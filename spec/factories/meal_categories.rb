@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: meal_categories
@@ -10,6 +12,6 @@
 
 FactoryBot.define do
   factory :meal_category do
-    title "MyString"
+    title { Faker::Lorem.word }
   end
 end

@@ -21,6 +21,7 @@ FactoryBot.define do
     association :menu, factory: :menu
     type { meal_classes.sample }
     name { Faker::Lorem.word }
+    association :meal_category, factory: :meal_category
     price_kopiykas { Faker::Number.positive(1000, 10_000) }
 
     meal_classes.each do |klass|
