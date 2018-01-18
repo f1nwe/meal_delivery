@@ -29,7 +29,7 @@ module Account
     end
 
     def collection
-      DailyOrder.ordered
+      current_user.daily_orders.ordered
     end
 
     def resource

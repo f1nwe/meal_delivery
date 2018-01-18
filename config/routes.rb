@@ -23,8 +23,11 @@ Rails.application.routes.draw do
     resource  :profile,      only: %i[edit update]
     resources :daily_orders, only: %i[show new create]
 
+    get 'dates',       to: 'dates#index'
+    get 'dates/:date', to: 'dates#show', as: 'date'
+
     get 'calendar', to: 'dashboard#calendar'
   end
 
-  root 'account/dashboard#calendar'
+  root 'account/dates#index'
 end

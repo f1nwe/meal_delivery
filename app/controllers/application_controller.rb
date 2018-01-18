@@ -12,4 +12,8 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
+
+  def not_found
+    raise ActionController::RoutingError, 'Not Found'
+  end
 end

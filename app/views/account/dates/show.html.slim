@@ -1,0 +1,13 @@
+.row
+  .col-xs-12
+    .panel.panel-default
+      .panel-heading
+        = l(@date)
+        - if @daily_order.present?
+          .pull-right
+            = link_to 'Your order', [:account, @daily_order],
+              class: 'btn btn-xs btn-success'
+      .panel-body
+        - if @menu.present?
+          = render 'shared/meals_per_groups_table',
+            grouped_meals: Presenters::Menu.new(@menu).meals_per_categories

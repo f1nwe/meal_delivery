@@ -1,0 +1,13 @@
+.row
+  .col-xs-12
+    .panel.panel-default
+      .panel-heading
+        | Dates
+        .pull-right
+          = link_to 'Order meals for today',
+            new_account_daily_order_path(date: Time.zone.today),
+            class: 'btn btn-xs btn-success'
+
+      .panel-body
+        = month_calendar do |date|
+          = link_to l(date, format: :short), account_date_path(date.to_s)
