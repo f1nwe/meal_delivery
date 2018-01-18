@@ -18,4 +18,5 @@ class DailyOrderMeal < ApplicationRecord
   belongs_to :meal
 
   validates_with Validators::MealMenuInclusion
+  validates :meal_id, uniqueness: { scope: :daily_order_id }
 end

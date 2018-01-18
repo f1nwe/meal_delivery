@@ -6,7 +6,7 @@ RSpec.describe Validators::MealMenuInclusion do
   describe '#validate' do
     let(:user)        { create(:user) }
     let(:menu1)       { create(:menu) }
-    let(:menu2)       { create(:menu) }
+    let(:menu2)       { create(:menu, date: 1.day.ago) }
     let(:meal1)       { create(:meal, menu: menu1) }
     let(:meal2)       { create(:meal, menu: menu2) }
     let(:daily_order) { create(:daily_order, user: user, menu: menu1) }

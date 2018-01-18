@@ -26,6 +26,9 @@ class DailyOrder < ApplicationRecord
 
   after_create :calculate_total_cost
 
+  validates :menu_id, uniqueness: { scope: :user_id }
+  validates :date,    uniqueness: { scope: :user_id }
+
   delegate :name, to: :user, prefix: true
 
   def self.total_cost
