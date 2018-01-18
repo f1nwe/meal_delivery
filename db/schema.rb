@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180117182108) do
+ActiveRecord::Schema.define(version: 20180118201513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 20180117182108) do
     t.bigint "meal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "meal_category_id"
     t.index ["daily_order_id"], name: "index_daily_order_meals_on_daily_order_id"
+    t.index ["meal_category_id"], name: "index_daily_order_meals_on_meal_category_id"
     t.index ["meal_id"], name: "index_daily_order_meals_on_meal_id"
   end
 
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 20180117182108) do
   end
 
   add_foreign_key "daily_order_meals", "daily_orders"
+  add_foreign_key "daily_order_meals", "meal_categories"
   add_foreign_key "daily_order_meals", "meals"
   add_foreign_key "daily_orders", "menus"
   add_foreign_key "daily_orders", "users"
