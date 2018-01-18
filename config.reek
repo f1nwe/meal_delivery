@@ -12,6 +12,10 @@ exclude_paths:
   UtilityFunction:
     enabled: false
 
+'app/lib/validators':
+  UtilityFunction:
+    enabled: false
+
 'app/controllers':
   InstanceVariableAssumption:
     enabled: false

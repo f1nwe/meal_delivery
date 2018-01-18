@@ -13,7 +13,13 @@
 
 FactoryBot.define do
   factory :daily_order_meal do
-    association :meal, factory: :meal
-    association :daily_order, factory: :daily_order
+    before :create do |daily_order_meal|
+      menu        = FactoryBot.create(:menu)
+      meal        = FactoryBot.create(:meal, menu: menu)
+      daily_order = FactoryBot.create(:daily_order, menu: menu)
+
+      daily_order_meal.meal        = meal
+      daily_order_meal.daily_order = daily_order
+    end
   end
 end
