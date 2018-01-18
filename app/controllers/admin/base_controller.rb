@@ -2,5 +2,6 @@
 
 module Admin
   class BaseController < Account::BaseController
+    before_action { authorize! :admin }
   end
 end

@@ -2,19 +2,32 @@
 
 Rails.application.routes.draw do
   namespace :admin do
+    get 'daily_orders/show'
+  end
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+
+  namespace :admin do
     resources :users,           only:   %i[index show]
     resources :menus,           except: %i[destroy]
     resources :meal_categories, except: %i[show]
-  end
+    resources :daily_orders,    only:   %i[show]
 
-  devise_for :users
+    get 'dates',       to: 'dates#index'
+    get 'dates/:date', to: 'dates#show', as: 'date'
+  end
 
   namespace :account do
     resource  :profile,      only: %i[edit update]
     resources :daily_orders, only: %i[show new create]
 
+    get 'dates',       to: 'dates#index'
+    get 'dates/:date', to: 'dates#show', as: 'date'
+
     get 'calendar', to: 'dashboard#calendar'
   end
 
-  root 'account/dashboard#calendar'
+  root 'account/dates#index'
 end

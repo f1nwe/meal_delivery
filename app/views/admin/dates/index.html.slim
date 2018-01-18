@@ -1,0 +1,7 @@
+.row
+  .col-xs-12
+    .panel.panel-default
+      .panel-heading User orders
+      .panel-body
+        = month_calendar attribute: :date do |date|
+          = link_to l(date, format: :short), admin_date_path(date)

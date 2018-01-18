@@ -1,0 +1,21 @@
+.row
+  .col-xs-12
+    .panel.panel-default
+      .panel-heading Orders
+      .panel-body
+        table.table.table-striped.table-bordered.table-hover.no-footer
+          thead
+            tr
+              th User
+              th Total cost
+          tbody
+            - @user_orders.each do |order|
+              tr
+                td= link_to order.user.name, admin_daily_order_path(order)
+                td= order.total_cost
+          tfoot
+            tr
+              td colspan=2 Total: #{@user_orders.total_cost}
+        .text-center
+          = paginate @user_orders
+

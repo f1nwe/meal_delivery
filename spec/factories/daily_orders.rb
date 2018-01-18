@@ -4,12 +4,13 @@
 #
 # Table name: daily_orders
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  date       :date
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  menu_id    :integer
+#  id                  :integer          not null, primary key
+#  user_id             :integer
+#  date                :date
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  menu_id             :integer
+#  total_cost_kopiykas :integer          default(0)
 #
 
 FactoryBot.define do

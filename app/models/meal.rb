@@ -18,8 +18,8 @@ class Meal < ApplicationRecord
   mount_uploader :photo, ::PhotoUploader
   monetize :price_kopiykas
 
-  has_many :daily_order_meals, dependent: :destroy
-  has_many :daily_order, through: :daily_order_meals
+  has_many :daily_order_meals, dependent: :restrict_with_error
+  has_many :daily_orders, through: :daily_order_meals
 
   belongs_to :meal_category
   belongs_to :menu
@@ -28,4 +28,12 @@ class Meal < ApplicationRecord
 
   validates :price, presence: true
   validates :name,  presence: true
+
+  before_save :update_total_cost_for_orders, if: :price_kopiykas_changed?
+
+  private
+
+  def update_total_cost_for_orders
+    Services::DailyOrdersTotalCost.new(daily_orders).calculate!
+  end
 end

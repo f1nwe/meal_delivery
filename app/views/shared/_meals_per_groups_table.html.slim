@@ -1,0 +1,10 @@
+table.table.table-striped.table-bordered.table-hover.no-footer
+  thead
+    tr
+      th Photo
+      th Name
+      th Price
+  tbody
+    - grouped_meals.each do |category, meals|
+      = render 'shared/meal_category_row', title: category, meals: meals
+

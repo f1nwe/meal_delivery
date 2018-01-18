@@ -12,6 +12,10 @@ exclude_paths:
   UtilityFunction:
     enabled: false
 
+'app/lib/validators':
+  UtilityFunction:
+    enabled: false
+
 'app/controllers':
   InstanceVariableAssumption:
     enabled: false
@@ -21,3 +25,7 @@ exclude_paths:
 
   UtilityFunction:
     enabled: false
+
+NilCheck:
+  exclude:
+    - 'User#first?'

@@ -2,6 +2,8 @@
   = link_to 'Meal Delivery', root_path, class: 'navbar-brand'
 
 ul.nav.navbar-top-links.navbar-right
+  - if current_user&.admin?
+    = render 'layouts/account/admin_menu'
   li.dropdown
     a.dropdown-toggle data-toggle="dropdown" href="#"
       i.fa.fa-user.fa-fw

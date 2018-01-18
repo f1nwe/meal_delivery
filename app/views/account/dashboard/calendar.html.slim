@@ -1,6 +1,0 @@
-.row
-  .col-xs-12
-    = month_calendar attribute: :date, events: @daily_orders do |date, daily_orders|
-      = l(date, format: :short)
-      - if @available_menu_dates.include?(date)
-        = render 'account/dashboard/calendar_cell_data', daily_orders: daily_orders, date: date
