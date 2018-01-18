@@ -17,8 +17,6 @@ FactoryBot.define do
   factory :daily_order do
     association :user, factory: :user
     association :menu, factory: :menu
-    sequence :date do |n|
-      n.days.ago
-    end
+    date Time.zone.today
   end
 end

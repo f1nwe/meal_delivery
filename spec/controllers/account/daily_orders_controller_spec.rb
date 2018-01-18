@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Account::DailyOrdersController, type: :controller do
   let(:user)  { create(:user, :admin) }
-  let!(:menu) { create(:menu) }
+  let!(:menu) { create(:menu, date: Time.zone.today) }
 
   before :each do
     sign_in user

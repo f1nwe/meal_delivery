@@ -28,6 +28,7 @@ class DailyOrder < ApplicationRecord
 
   validates :menu_id, uniqueness: { scope: :user_id }
   validates :date,    uniqueness: { scope: :user_id }
+  validate  :date_is_today
 
   delegate :name, to: :user, prefix: true
 
@@ -37,5 +38,13 @@ class DailyOrder < ApplicationRecord
 
   def calculate_total_cost
     update(total_cost_kopiykas: meals.sum(:price_kopiykas))
+  end
+
+  private
+
+  def date_is_today
+    return if date.today?
+
+    errors[:date] << 'You can create order only for today'
   end
 end
