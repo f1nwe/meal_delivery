@@ -12,6 +12,10 @@
 #
 
 class DailyOrderMeal < ApplicationRecord
+  include ActiveModel::Validations
+
   belongs_to :daily_order
   belongs_to :meal
+
+  validates_with Validators::MealMenuInclusion
 end
