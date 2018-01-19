@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'daily_orders/show'
-  end
-
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
@@ -27,6 +23,12 @@ Rails.application.routes.draw do
     get 'dates/:date', to: 'dates#show', as: 'date'
 
     get 'calendar', to: 'dashboard#calendar'
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :daily_orders, only: %i[index]
+    end
   end
 
   root 'account/dates#index'
