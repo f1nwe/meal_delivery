@@ -3,10 +3,15 @@
     .panel.panel-default
       .panel-heading
         = l(@date)
-        - if @daily_order.present?
-          .pull-right
-            = link_to 'Your order', [:account, @daily_order],
-              class: 'btn btn-xs btn-success'
+        .pull-right
+          - if @daily_order.present?
+              = link_to 'Your order', [:account, @daily_order],
+                class: 'btn btn-xs btn-success'
+          - else
+            = link_to 'New order', [:new, :account, :daily_order],
+                class: 'btn btn-xs btn-success'
+
+
       .panel-body
         - if @menu.present?
           = render 'shared/meals_per_groups_table',
