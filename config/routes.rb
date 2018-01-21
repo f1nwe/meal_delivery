@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :menus,           except: %i[destroy]
     resources :meal_categories, except: %i[show]
     resources :daily_orders,    only:   %i[show]
+    resources :api_clients,     except: %i[show]
 
     get 'dates',       to: 'dates#index'
     get 'dates/:date', to: 'dates#show', as: 'date'

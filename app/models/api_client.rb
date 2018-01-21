@@ -14,6 +14,10 @@
 class ApiClient < ApplicationRecord
   before_create :set_access_token
 
+  scope :ordered,  -> { order(name: :asc) }
+
+  validates :name, presence: true, uniqueness: true
+
   private
 
   def set_access_token
