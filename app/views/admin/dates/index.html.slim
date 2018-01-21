@@ -3,5 +3,5 @@
     .panel.panel-default
       .panel-heading User orders
       .panel-body
-        = month_calendar attribute: :date do |date|
+        = month_calendar do |date|
           = link_to l(date, format: :short), admin_date_path(date)

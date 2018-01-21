@@ -1,0 +1,28 @@
+.row
+  .col-xs-12
+    .panel.panel-default
+      .panel-heading
+        | API client
+        .pull-right
+          = link_to 'Create', new_admin_api_client_path, class: 'btn btn-xs btn-success'
+      .panel-body
+        table.table.table-striped.table-bordered.table-hover.no-footer
+          thead
+            tr
+              th Name
+              th Token
+              th Actions
+
+          tbody
+            - @api_clients.each do |api_client|
+              tr
+                td= link_to api_client.name , edit_admin_api_client_path(api_client)
+
+                td= api_client.access_token
+                td= link_to 'delete', admin_api_client_path(api_client), method: :delete,
+                  data: { confirm: 'Are you sure' }
+          tfoot
+            tr
+              td colspan=3
+                .text-center
+                  = paginate @api_clients

@@ -29,3 +29,11 @@ exclude_paths:
 NilCheck:
   exclude:
     - 'User#first?'
+
+UncommunicativeModuleName:
+  accept:
+    - 'V1'
+
+ControlParameter:
+  exclude:
+    - 'ControllerMacros#authorize_api'

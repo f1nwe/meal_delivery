@@ -39,3 +39,8 @@ Naming/PredicateName:
 
 Metrics/LineLength:
   Max: 100
+
+Lint/Loop:
+    Exclude:
+      - 'app/models/api_client.rb'
+

@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180118201513) do
+ActiveRecord::Schema.define(version: 20180121131548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "api_clients", force: :cascade do |t|
+    t.string "access_token"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["access_token"], name: "index_api_clients_on_access_token", unique: true
+    t.index ["name"], name: "index_api_clients_on_name", unique: true
+  end
 
   create_table "daily_order_meals", force: :cascade do |t|
     t.bigint "daily_order_id"

@@ -7,11 +7,11 @@ module Admin
     end
 
     def new
-      @meal_category = MealCategory.new
+      @meal_category = collection.new
     end
 
     def create
-      @meal_category = MealCategory.new(meal_category_params)
+      @meal_category = collection.new(meal_category_params)
 
       if @meal_category.save
         flash[:success] = 'Category was successfully created'

@@ -2,16 +2,18 @@
 
 module Admin
   class DatesController < BaseController
+    include DateParser
+
     def index; end
 
     def show
-      @user_orders = collection.page(params[:page]).per(15)
+      @user_orders = collection.where(date: date).page(params[:page]).per(15)
     end
 
     private
 
     def collection
-      DailyOrder.in_month(Date.parse(params[:date])).ordered
+      DailyOrder.in_month(date).ordered
     end
   end
 end

@@ -1,0 +1,6 @@
+= simple_form_for [:admin, api_client], html: { role: 'form' } do |f|
+    = f.input :name
+    - unless new_action?
+      = f.input :access_token, input_html: { readonly: true }
+    = f.submit class: 'btn btn-success'
+
