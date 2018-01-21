@@ -3,6 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Admin::UsersController, type: :controller do
+  include_examples 'unauthenticated', actions: %i[index show]
+  include_examples 'authorized_as_client', actions: %i[index show]
+
   context 'when logged as admin user' do
     let(:user) { create(:user, :admin) }
 

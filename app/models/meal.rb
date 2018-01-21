@@ -18,7 +18,7 @@ class Meal < ApplicationRecord
   mount_uploader :photo, ::PhotoUploader
   monetize :price_kopiykas
 
-  has_many :daily_order_meals, dependent: :restrict_with_error
+  has_many :daily_order_meals, dependent: :destroy
   has_many :daily_orders, through: :daily_order_meals
 
   belongs_to :meal_category

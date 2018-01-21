@@ -3,10 +3,12 @@
     .panel.panel-default
       .panel-heading
         | Dates
-        .pull-right
-          = link_to 'Order meals for today',
-            new_account_daily_order_path(date: Time.zone.today),
-            class: 'btn btn-xs btn-success'
+        - if @daily_menu.present?
+          .pull-right
+            = link_to 'Order meals for today',
+              new_account_daily_order_path(date: Time.zone.today),
+              class: 'btn btn-xs btn-success'
+
 
       .panel-body
         = month_calendar do |date|

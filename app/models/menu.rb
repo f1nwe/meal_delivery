@@ -11,8 +11,8 @@
 #
 
 class Menu < ApplicationRecord
-  has_many :meals, inverse_of: :menu, dependent: :nullify
-  has_many :daily_orders, dependent: :nullify
+  has_many :meals, inverse_of: :menu, dependent: :destroy
+  has_many :daily_orders, dependent: :destroy
   accepts_nested_attributes_for :meals, reject_if: :all_blank, allow_destroy: true
 
   scope :ordered,  -> { order(date: :asc) }

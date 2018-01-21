@@ -12,6 +12,7 @@
 
 class MealCategory < ApplicationRecord
   has_many :meals, dependent: :destroy
+  has_many :daily_order_meals, dependent: :destroy
 
   scope :ordered, -> { order(title: :asc) }
 

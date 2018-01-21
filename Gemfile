@@ -40,25 +40,25 @@ gem 'factory_bot_rails'
 gem 'faker', git: 'git://github.com/stympy/faker.git', branch: 'master'
 
 group :development, :test do
-  gem 'brakeman', require: false
-  gem 'capybara', '~> 2.13'
   gem 'pry-rails'
-  gem 'rails_best_practices'
-  gem 'reek'
-  gem 'rspec-rails'
-  gem 'rubocop', require: false
-  gem 'selenium-webdriver'
 end
 
 group :development do
   gem 'annotate'
+  gem 'brakeman', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'rails_best_practices'
+  gem 'reek'
+  gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
 end
 
 group :test do
+  gem 'capybara', '~> 2.13'
+  gem 'capybara-webkit'
+  gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'simplecov'
 end

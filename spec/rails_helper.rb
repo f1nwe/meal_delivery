@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+require 'simplecov'
+
+SimpleCov.start
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -10,6 +13,7 @@ require File.expand_path('../../config/environment', __FILE__)
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 require 'rspec/rails'
+require 'capybara/rspec'
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -34,6 +38,9 @@ RSpec.configure do |config|
     end
   end
 
+  # configuring capybara
+  Capybara.javascript_driver = :webkit
+
   # include methods depending on file location
   config.infer_spec_type_from_file_location!
 
@@ -46,6 +53,7 @@ RSpec.configure do |config|
   # inlude custom macroeses into spec
   #
   config.include(ControllerMacros, type: :controller)
+  config.include(Warden::Test::Helpers, type: :feature)
 end
 
 # configure shoulda matchers
