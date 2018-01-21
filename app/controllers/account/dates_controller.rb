@@ -4,7 +4,9 @@ module Account
   class DatesController < BaseController
     include DateParser
 
-    def index; end
+    def index
+      @daily_menu = Menu.find_by(date: Time.zone.today)
+    end
 
     def show
       @date        = date

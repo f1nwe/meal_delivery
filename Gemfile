@@ -57,8 +57,8 @@ end
 
 group :test do
   gem 'capybara', '~> 2.13'
+  gem 'capybara-webkit'
   gem 'rspec-rails'
-  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'simplecov'
 end
