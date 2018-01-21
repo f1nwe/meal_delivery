@@ -33,3 +33,7 @@ NilCheck:
 UncommunicativeModuleName:
   accept:
     - 'V1'
+
+ControlParameter:
+  exclude:
+    - 'ControllerMacros#authorize_api'

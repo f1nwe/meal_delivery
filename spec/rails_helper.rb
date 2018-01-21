@@ -43,9 +43,12 @@ RSpec.configure do |config|
   # include factory bot methods
   config.include FactoryBot::Syntax::Methods
 
-  # configure shoulda matchers
+  # inlude custom macroeses into spec
+  #
+  config.include(ControllerMacros, type: :controller)
 end
 
+# configure shoulda matchers
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
