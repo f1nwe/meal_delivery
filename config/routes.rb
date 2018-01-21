@@ -6,19 +6,19 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :users,           only:   %i[index show]
-    resources :menus,           except: %i[destroy]
-    resources :meal_categories, except: %i[show]
-    resources :daily_orders,    only:   %i[show]
     resources :api_clients,     except: %i[show]
+    resources :daily_orders,    only:   %i[show]
+    resources :meal_categories, except: %i[show]
+    resources :menus,           except: %i[destroy]
+    resources :users,           only:   %i[index show]
 
     get 'dates',       to: 'dates#index'
     get 'dates/:date', to: 'dates#show', as: 'date'
   end
 
   namespace :account do
-    resource  :profile,      only: %i[edit update]
     resources :daily_orders, only: %i[show new create]
+    resource  :profile,      only: %i[edit update]
 
     get 'dates',       to: 'dates#index'
     get 'dates/:date', to: 'dates#show', as: 'date'
