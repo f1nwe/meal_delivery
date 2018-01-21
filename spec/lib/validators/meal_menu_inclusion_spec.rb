@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Validators::MealMenuInclusion do
   describe '#validate' do
     let(:user)        { create(:user) }
-    let(:menu1)       { create(:menu) }
+    let(:menu1)       { create(:menu, date: Time.zone.today) }
     let(:menu2)       { create(:menu, date: 1.day.ago) }
     let(:meal1)       { create(:meal, menu: menu1) }
     let(:meal2)       { create(:meal, menu: menu2) }
