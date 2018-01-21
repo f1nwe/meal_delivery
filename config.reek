@@ -29,3 +29,7 @@ exclude_paths:
 NilCheck:
   exclude:
     - 'User#first?'
+
+UncommunicativeModuleName:
+  accept:
+    - 'V1'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.status 'success'
 json.data do
   json.daily_orders do
