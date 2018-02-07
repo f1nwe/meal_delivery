@@ -1,0 +1,30 @@
+version: '2'
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: db_guy
+      POSTGRES_PASSWORD: db_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+  web:
+    image: f1nwe/meal_delivery
+    command: bash -c "rm -f tmp/pids/server.pid && rails s"
+    volumes:
+      - .:/meal_delivery
+    ports:
+      - "3000:3000"
+    environment:
+      DB_USER: db_guy
+      DB_PASSWORD: db_pass
+      DB_HOST: db
+
+    tty: true
+    stdin_open: true
+
+    depends_on:
+      - db
+volumes:
+  postgres:

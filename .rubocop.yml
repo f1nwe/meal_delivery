@@ -1,17 +1,18 @@
-Documentation:
-    Enabled: false
-
-Rails:
-    Enabled: true
-
 AllCops:
+  TargetRubyVersion: 2.5
   Exclude:
     - 'vendor/**/*'
     - 'tmp/**/*'
     - 'config/initializers/*'
     - 'bin/*'
     - 'db/**/*'
-  TargetRubyVersion: 2.5
+
+Documentation:
+    Enabled: false
+
+Rails:
+    Enabled: true
+
 
 EndOfLine:
   Enabled: false
