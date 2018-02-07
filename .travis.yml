@@ -2,6 +2,11 @@ language: ruby
 rvm:
   - 2.5.0
 
+env:
+  DB_USER: postgres
+  DB_PASSWORD: ''
+  DB_HOST: localhost
+
 before_install:
   - gem update --system
   - gem update bundler
